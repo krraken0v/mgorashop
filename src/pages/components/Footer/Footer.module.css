@@ -1,0 +1,37 @@
+.footercontainer {
+  width: 1440px;
+  height: 124px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.socialcontainer {
+  margin-left: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.socialimage {
+  width: 30px;
+  height: 30px;
+  margin-left: 10px;
+}
+
+.navbarfootercontainer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.navbarfootertitle {
+  margin-left: 50px;
+  font-size: 15px;
+  text-decoration: none;
+  color: #111;
+}
+
+.yearshopcontainer {
+  margin-right: 40px;
+}/*# sourceMappingURL=Footer.module.css.map */

@@ -1,0 +1,49 @@
+.productItemcontainer {
+  height: 350px;
+  width: 275px;
+  background-color: #fff;
+  border-radius: 30px;
+  margin: 0 auto;
+}
+
+.productimage {
+  width: 275px;
+  height: 231px;
+  border-radius: 30px 30px 0 0;
+}
+
+.producttitle {
+  text-align: center;
+  font-size: 15px;
+  margin-top: 15px;
+}
+
+.productprice {
+  text-align: center;
+  font-size: 15px;
+  margin-top: 6px;
+}
+
+.buttoncart {
+  width: 150px;
+  height: 30px;
+  background-color: #E9DECA;
+  display: block;
+  text-align: center;
+  margin: 0 auto;
+  border: none;
+  border-radius: 30px;
+  color: #111;
+  position: relative;
+  cursor: pointer;
+  margin-top: 10px;
+  z-index: 1;
+}
+
+.buttoncartimg {
+  width: 15px;
+  height: 15px;
+  position: absolute;
+  top: 8px;
+  right: 14px;
+}/*# sourceMappingURL=ProductItem.module.css.map */
