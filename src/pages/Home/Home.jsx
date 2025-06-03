@@ -6,9 +6,14 @@ import styles from '/src/pages/Home/Home.module.sass';
 import { useState } from 'react';
 export default function Home() {
   let [selectedCategory, setSelectedCategory] = useState(0);
+  let [counterCart, setCounterCart] = useState(0);
+  let [cartItems, setCartItems] = useState([]);
+  const addtoCart = product => setCartItems(prev => [...prev, product]);
+  const changeCounter = () => setCounterCart(prev => prev + 1);
+  console.log(cartItems);
   return (
     <>
-      <Navbar onClickCategory={setSelectedCategory}></Navbar>
+      <Navbar counter={counterCart} onClickCategory={setSelectedCategory}></Navbar>
       <div className={styles.productscontainer}>
         {products
           .filter(product =>
@@ -22,6 +27,8 @@ export default function Home() {
               image={product.image}
               title={product.title}
               price={product.price}
+              addCounterCart={changeCounter}
+              addCart={addtoCart}
             ></ProductItem>
           ))}
         ,

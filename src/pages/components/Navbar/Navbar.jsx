@@ -1,6 +1,7 @@
 import styles from './Navbar.module.sass';
 import { useNavigate } from 'react-router-dom';
-export default function Navbar({ onClickCategory }) {
+import { useState } from 'react';
+export default function Navbar({ onClickCategory, counter }) {
   const menu = ['ГОЛОВНА', 'КОНТАКТИ', 'ВЕСЬ ОДЯГ', 'ФУТБОЛКИ', 'ШТАНИ', 'КУРТКИ'];
   const navigate = useNavigate();
   return (
@@ -14,17 +15,18 @@ export default function Navbar({ onClickCategory }) {
             className={styles.navbaroption}
             key={i}
             onClick={() => {
-              i == 1 ? navigate('/social') : onClickCategory(i);
+              i == 1 ? navigate('/social') : navigate('/'), onClickCategory(i);
             }}
           >
             {menuitem}
           </li>
         ))}
       </ul>
-      <div className={styles.cartimagecontainer}>
-        <a href="#">
-          <img className={styles.cartimage} src="/assets/cartimage.png" alt="cartimage" />
-        </a>
+      <div className={styles.cartimagecontainer} onClick={() => navigate('/cart')}>
+        <img className={styles.cartimage} src="/assets/cartimage.png" alt="cartimage" />
+      </div>
+      <div className={styles.counter}>
+        <p className={styles.counternumber}>{counter}</p>
       </div>
     </div>
   );

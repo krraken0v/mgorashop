@@ -1,0 +1,72 @@
+body {
+  background-color: #F4F4F4;
+}
+
+.ordercontainer {
+  width: 960px;
+  height: 788px;
+  background-color: white;
+  margin: 0 auto;
+  margin-top: 100px;
+  border-radius: 30px;
+}
+
+.ordertitle {
+  text-align: center;
+  font-size: 36px;
+  padding-top: 78px;
+  color: #202124;
+}
+
+.inputscontainer {
+  margin-top: 44px;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.orderinput {
+  width: 633px;
+  height: 66px;
+  background-color: #E6E6E6;
+  display: block;
+  border-radius: 10px;
+  color: #202124;
+  border: none;
+  margin: 0 auto;
+  margin-top: 33px;
+  padding-left: 15px;
+}
+
+.checkcontainer {
+  margin-top: 59px;
+  display: flex;
+  align-items: center;
+  padding-left: 181px;
+}
+
+.ordercheckbox {
+  border: none;
+  background-color: #E6E6E6;
+  width: 20px;
+  height: 20px;
+}
+
+.agreeorder {
+  margin-left: 12px;
+}
+
+.ordersuccess {
+  width: 424px;
+  height: 68px;
+  color: #fff;
+  background-color: #E63946;
+  border-radius: 10px;
+  text-align: center;
+  font-size: 24px;
+  display: block;
+  margin: 0 auto;
+  margin-top: 61px;
+  border: none;
+  cursor: pointer;
+}/*# sourceMappingURL=Order.module.css.map */

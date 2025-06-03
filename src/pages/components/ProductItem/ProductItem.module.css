@@ -27,13 +27,13 @@
 .buttoncart {
   width: 150px;
   height: 30px;
-  background-color: #E9DECA;
+  background-color: #E63946;
   display: block;
   text-align: center;
   margin: 0 auto;
   border: none;
   border-radius: 30px;
-  color: #111;
+  color: white;
   position: relative;
   cursor: pointer;
   margin-top: 10px;

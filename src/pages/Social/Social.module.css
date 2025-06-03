@@ -1,0 +1,19 @@
+.socialcontainer {
+  height: 1080px;
+  background: #F4F4F4;
+  margin: 0 auto;
+  padding-top: 250px;
+}
+
+.socialtitle {
+  text-align: center;
+  color: #202124;
+}
+
+.socialcontainerimages {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 50px;
+  padding: 0 600px 0 600px;
+}/*# sourceMappingURL=Social.module.css.map */
