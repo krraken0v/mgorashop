@@ -1,6 +1,20 @@
 import styles from './ProductItem.module.sass';
+import { CartContext } from '../../../ContextCart';
 
-export default function ProductItem({ id, image, title, price, addCounterCart, addCart }) {
+import { useContext } from 'react';
+export default function ProductItem({ id, image, title, price, quantity, addCounterCart }) {
+  const { cartItems, setCartItems } = useContext(CartContext);
+  const addtoCart = () => {
+    const existingItem = cartItems.find(item => item.id === id);
+    if (existingItem) {
+      const updateCart = cartItems.map(item =>
+        item.id === id ? { ...item, quantity: item.quantity + 1 } : item
+      );
+      setCartItems(updateCart);
+    } else {
+      setCartItems([...cartItems, { id, title, price, image, quantity: 1 }]);
+    }
+  };
   return (
     <>
       <div className={styles.productItemcontainer} key={id}>
@@ -8,11 +22,10 @@ export default function ProductItem({ id, image, title, price, addCounterCart, a
         <h2 className={styles.producttitle}>{title}</h2>
         <p className={styles.productprice}>{price}</p>
         <button
-          key={id}
           className={styles.buttoncart}
           onClick={() => {
             addCounterCart();
-            addCart({ title, price });
+            addtoCart();
           }}
         >
           Додати в

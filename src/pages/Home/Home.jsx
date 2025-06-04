@@ -7,10 +7,7 @@ import { useState } from 'react';
 export default function Home() {
   let [selectedCategory, setSelectedCategory] = useState(0);
   let [counterCart, setCounterCart] = useState(0);
-  let [cartItems, setCartItems] = useState([]);
-  const addtoCart = product => setCartItems(prev => [...prev, product]);
   const changeCounter = () => setCounterCart(prev => prev + 1);
-  console.log(cartItems);
   return (
     <>
       <Navbar counter={counterCart} onClickCategory={setSelectedCategory}></Navbar>
@@ -24,11 +21,12 @@ export default function Home() {
           .map(product => (
             <ProductItem
               key={product.id}
+              id={product.id}
               image={product.image}
               title={product.title}
               price={product.price}
+              quantity={products.quantity}
               addCounterCart={changeCounter}
-              addCart={addtoCart}
             ></ProductItem>
           ))}
         ,

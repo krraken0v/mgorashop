@@ -1,7 +1,6 @@
 .navbarcontainer {
   width: 1440px;
   height: 145px;
-  display: block;
   position: fixed;
   background-color: #F4F4F4;
   display: flex;

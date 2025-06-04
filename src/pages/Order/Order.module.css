@@ -4,7 +4,7 @@ body {
 
 .ordercontainer {
   width: 960px;
-  height: 788px;
+  height: 100%;
   background-color: white;
   margin: 0 auto;
   margin-top: 100px;
@@ -69,4 +69,43 @@ body {
   margin-top: 61px;
   border: none;
   cursor: pointer;
+}
+
+.orderSubmit {
+  margin-top: 50px;
+  margin-left: 200px;
+}
+
+.submitparagraph {
+  margin-top: 15px;
+  position: relative;
+}
+
+.okicon {
+  width: 20px;
+  height: 20px;
+  position: absolute;
+  left: -25px;
+  cursor: pointer;
+}
+
+.modalOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.modalContent {
+  background: white;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  text-align: center;
 }/*# sourceMappingURL=Order.module.css.map */

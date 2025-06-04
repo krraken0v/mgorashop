@@ -5,6 +5,7 @@ const products = [
     title: 'Футболка белая Oversize',
     price: 799,
     category: 3,
+    quantity: 1,
   },
   {
     id: 2,
@@ -12,6 +13,7 @@ const products = [
     title: 'Футболка чёрная Minimal',
     price: 849,
     category: 3,
+    quantity: 1,
   },
   {
     id: 3,
@@ -19,6 +21,7 @@ const products = [
     title: 'Куртка Classic',
     price: 1299,
     category: 5,
+    quantity: 1,
   },
   {
     id: 4,
@@ -26,6 +29,7 @@ const products = [
     title: 'Свитшот синий Urban',
     price: 1149,
     category: 5,
+    quantity: 1,
   },
   {
     id: 5,
@@ -33,6 +37,7 @@ const products = [
     title: 'Джоггеры чёрные Basic',
     price: 999,
     category: 4,
+    quantity: 1,
   },
   {
     id: 6,
@@ -40,6 +45,7 @@ const products = [
     title: 'Куртка бежевая Light',
     price: 1699,
     category: 5,
+    quantity: 1,
   },
   {
     id: 7,
@@ -47,6 +53,7 @@ const products = [
     title: 'Штаны серые Comfort',
     price: 749,
     category: 4,
+    quantity: 1,
   },
   {
     id: 8,
@@ -54,6 +61,7 @@ const products = [
     title: 'Карго штаны хаки',
     price: 1199,
     category: 4,
+    quantity: 1,
   },
   {
     id: 9,
@@ -61,6 +69,7 @@ const products = [
     title: 'Лонгслив белый Slim',
     price: 899,
     category: 3,
+    quantity: 1,
   },
 ];
 
