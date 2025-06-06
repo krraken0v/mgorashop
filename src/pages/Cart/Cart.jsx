@@ -1,11 +1,22 @@
 import styles from './Cart.module.sass';
 import { useNavigate } from 'react-router-dom';
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
 import { CartContext } from '../../ContextCart';
 
 export default function Cart() {
   const navigate = useNavigate();
   const { cartItems, setCartItems } = useContext(CartContext);
+  console.log(cartItems);
+  const [navigateOrder, setnavigateOrder] = useState(false);
+  const handleCartItems = () => {
+    if (!cartItems.length) {
+      setnavigateOrder(true);
+      console.log(navigateOrder);
+    } else {
+      navigate('/cart/order');
+    }
+    return;
+  };
   const totalPrice = cartItems.reduce((accum, item) => {
     return accum + item.price * (item.quantity || 1);
   }, 0);
@@ -53,9 +64,31 @@ export default function Cart() {
         <button className={styles.buttonback} onClick={() => navigate('/')}>
           ВЕРНУТЬСЯ В КАТАЛОГ
         </button>
-        <button className={styles.buttonbuy} onClick={() => navigate('/cart/order')}>
+        <button
+          className={styles.buttonbuy}
+          onClick={() => {
+            handleCartItems();
+          }}
+        >
           ОФОРМИТЬ ЗАКАЗ
         </button>
+        {navigateOrder && (
+          <div className={styles.modalOverlay}>
+            <div className={styles.modalContent}>
+              <p className={styles.modalText}>
+                ВЫ НИЧЕГО НЕ ДОБАВИЛИ В КОРЗИНУ,ЧТОБЫ ОФОРМИТЬ ЗАКАЗ!
+              </p>{' '}
+              <button
+                className={styles.modalButton}
+                onClick={() => {
+                  navigate('/');
+                }}
+              >
+                ВЕРНУТЬСЯ В КАТАЛОГ
+              </button>
+            </div>
+          </div>
+        )}
       </div>
     </div>
   );

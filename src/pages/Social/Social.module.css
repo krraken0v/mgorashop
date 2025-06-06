@@ -16,4 +16,18 @@
   justify-content: space-between;
   margin-top: 50px;
   padding: 0 600px 0 600px;
+}
+
+.buttonSocialBack {
+  width: 250px;
+  height: 50px;
+  cursor: pointer;
+  color: #fff;
+  background-color: #E63946;
+  border: none;
+  display: block;
+  font-size: 17px;
+  border-radius: 10px;
+  margin: 0 auto;
+  margin-top: 50px;
 }/*# sourceMappingURL=Social.module.css.map */

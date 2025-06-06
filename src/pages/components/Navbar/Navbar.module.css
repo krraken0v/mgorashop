@@ -1,11 +1,11 @@
 .navbarcontainer {
   width: 1440px;
   height: 145px;
-  position: fixed;
   background-color: #F4F4F4;
   display: flex;
   align-items: center;
   z-index: 2;
+  margin: 0 auto;
 }
 
 .logoimage {
@@ -48,8 +48,8 @@
   text-align: center;
   border-radius: 30px;
   position: absolute;
-  right: 35px;
-  top: 75px;
+  right: 145px;
+  top: 76px;
   z-index: 3;
 }
 

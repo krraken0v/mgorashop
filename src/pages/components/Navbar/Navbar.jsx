@@ -1,6 +1,5 @@
 import styles from './Navbar.module.sass';
 import { useNavigate } from 'react-router-dom';
-import { useState } from 'react';
 export default function Navbar({ onClickCategory, counter }) {
   const menu = ['ГОЛОВНА', 'КОНТАКТИ', 'ВЕСЬ ОДЯГ', 'ФУТБОЛКИ', 'ШТАНИ', 'КУРТКИ'];
   const navigate = useNavigate();
