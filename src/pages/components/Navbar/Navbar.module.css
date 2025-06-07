@@ -8,6 +8,11 @@
   margin: 0 auto;
 }
 
+@media (max-width: 768px) {
+  .navbarcontainer {
+    display: none;
+  }
+}
 .logoimage {
   width: 138px;
   height: 138px;

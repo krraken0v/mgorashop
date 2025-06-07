@@ -5,7 +5,20 @@
   grid-template-rows: repeat(2, 1fr);
   grid-column-gap: 14px;
   grid-row-gap: 25px;
-  width: 1440px;
+  width: 100%;
   background-color: #F4F4F4;
   margin-top: 50px;
+}
+
+@media (max-width: 500px) {
+  .productscontainer {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    grid-column-gap: 14px;
+    grid-row-gap: 25px;
+    width: 100%;
+    background-color: #F4F4F4;
+    margin-top: 50px;
+  }
 }/*# sourceMappingURL=Home.module.css.map */

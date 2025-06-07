@@ -4,6 +4,7 @@ import products from '/src/products.js';
 import Footer from '../components/Footer/Footer';
 import styles from '/src/pages/Home/Home.module.sass';
 import { useState } from 'react';
+import BurgerMenu from '../components/BurgerMenu/BurgerMenu';
 export default function Home() {
   let [selectedCategory, setSelectedCategory] = useState(0);
   let [counterCart, setCounterCart] = useState(0);
@@ -11,6 +12,7 @@ export default function Home() {
   return (
     <>
       <Navbar counter={counterCart} onClickCategory={setSelectedCategory}></Navbar>
+      <BurgerMenu counter={counterCart} onClickCategory={setSelectedCategory}></BurgerMenu>
       <div className={styles.productscontainer}>
         {products
           .filter(product =>
