@@ -5,7 +5,7 @@ export default function Footer() {
     <div className={styles.footercontainer}>
       <div className={styles.socialcontainer}>
         <img className={styles.socialimage} src="/public/assets/telegram.png" alt="telegram" />
-        <img className={styles.socialimage} src="/public/assets/tiktok.png" alt="tiktok" />
+        <img className={styles.socialimagetok} src="/public/assets/tiktok.png" alt="tiktok" />
         <img className={styles.socialimage} src="/public/assets/instagram.png" alt="instagram" />
       </div>
       <div className={styles.navbarfootercontainer}>

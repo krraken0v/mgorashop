@@ -39,6 +39,16 @@
 }
 
 @media (max-width: 500px) {
+  .socialimage {
+    height: 50px;
+    width: 50px;
+    margin: 0;
+  }
+  .socialimagetok {
+    height: 50px;
+    width: 50px;
+    margin: 0 50px;
+  }
   .footercontainer {
     width: 100%;
     display: flex;
@@ -53,12 +63,12 @@
     cursor: pointer;
   }
   .navbarfootercontainer {
-    margin-top: 20px;
+    margin-top: 50px;
     padding: 0 10px;
   }
   .yearshopcontainer {
     margin: 0 auto;
-    margin-top: 30px;
+    margin-top: 50px;
     margin-bottom: 20px;
   }
 }/*# sourceMappingURL=Footer.module.css.map */
