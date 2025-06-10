@@ -1,0 +1,67 @@
+.navbarcontainer {
+  width: 100%;
+  height: 145px;
+  background-color: #F4F4F4;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  z-index: 2;
+  margin: 0 auto;
+}
+
+@media (max-width: 480px) {
+  .navbarcontainer {
+    display: none;
+  }
+}
+.logoimage {
+  width: 138px;
+  height: 138px;
+}
+
+.logoimagecontainer {
+  display: inline-block;
+}
+
+.navbarmodule {
+  list-style: none;
+  display: flex;
+  align-items: center;
+}
+
+.navbaroption {
+  margin-left: 58px;
+  cursor: pointer;
+}
+
+.navbarlink {
+  text-decoration: none;
+  color: #111;
+}
+
+.cartimagecontainer {
+  margin-left: 50px;
+  cursor: pointer;
+  margin-top: 15px;
+  margin-right: 15px;
+  display: flex;
+  align-items: center;
+}
+
+.cartimage {
+  z-index: 1;
+}
+
+.counternumber {
+  font-size: 15px;
+  display: block;
+  background-color: #E63946;
+  color: #fff;
+  width: 20px;
+  height: 20px;
+  text-align: center;
+  border-radius: 30px;
+  margin-top: 30px;
+  margin-left: -20px;
+  z-index: 999;
+}/*# sourceMappingURL=Navbar.module.css.map */

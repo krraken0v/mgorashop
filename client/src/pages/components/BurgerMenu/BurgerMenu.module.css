@@ -1,0 +1,72 @@
+.burgercontainer {
+  display: none;
+  width: 100%;
+}
+
+@media (max-width: 480px) {
+  .burgercontainer {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+  }
+}
+.logoimage {
+  width: 150px;
+  height: 150px;
+}
+
+.burgerimg {
+  margin-left: 15px;
+  margin-top: 15px;
+  margin-right: 15px;
+  display: flex;
+  align-items: center;
+}
+
+.cartimagecontainer {
+  position: relative;
+  display: flex;
+  align-items: center;
+  margin-right: 15px;
+}
+
+.burgermenuContainer {
+  top: 0px;
+  width: 100%;
+  height: 500px;
+  background-color: #fff;
+  position: absolute;
+  right: 0;
+  z-index: 999;
+}
+
+.closeBurgerImg {
+  width: 30px;
+  height: 30px;
+  margin-top: 15px;
+  margin-left: 30px;
+}
+
+.burgeritemsmodule {
+  list-style: none;
+  margin-left: 30px;
+}
+
+.burgeroption {
+  font-size: 20px;
+  margin-top: 20px;
+}
+
+.counternumber {
+  background-color: #E63946;
+  color: #fff;
+  width: 20px;
+  height: 20px;
+  text-align: center;
+  margin-top: 30px;
+  margin-left: -20px;
+  border-radius: 30px;
+  z-index: 999;
+}/*# sourceMappingURL=BurgerMenu.module.css.map */
