@@ -8,24 +8,21 @@ import BurgerMenu from '../components/BurgerMenu/BurgerMenu';
 export default function Home() {
   const [products,setProducts] = useState([]);
   let [selectedCategory, setSelectedCategory] = useState(0);
-  let [counterCart, setCounterCart] = useState(0);
   useEffect(()=>{
     const fetchProducts = async () =>{
       try {
         const response = await axios.get('http://localhost:5000/products');
         setProducts(response.data)
-        console.log(response.data);
       } catch(err){
         console.error(`Ошибка при загрузке товаров: ${err}`);
       }
     }
     fetchProducts()
   },[]);
-  const changeCounter = () => setCounterCart(prev => prev + 1);
   return (
     <>
-      <Navbar counter={counterCart} onClickCategory={setSelectedCategory}></Navbar>
-      <BurgerMenu counter={counterCart} onClickCategory={setSelectedCategory}></BurgerMenu>
+      <Navbar onClickCategory={setSelectedCategory}></Navbar>
+      <BurgerMenu onClickCategory={setSelectedCategory}></BurgerMenu>
       <div className={styles.productscontainer}>
         {products
           .filter(product =>
@@ -40,8 +37,7 @@ export default function Home() {
               image={product.image}
               title={product.title}
               price={product.price}
-              quantity={products.quantity}
-              addCounterCart={changeCounter}
+              quantity={product.quantity}
             ></ProductItem>
           ))}
         ,

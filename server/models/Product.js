@@ -7,5 +7,5 @@ const productSchema = new mongoose.Schema({
     category:{type:Number,required:true},
     quantity:{type:Number,required:true,min:1}
 
-})
+});
 module.exports = mongoose.model('Product', productSchema);

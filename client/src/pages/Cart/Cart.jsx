@@ -6,7 +6,6 @@ import { CartContext } from '../../ContextCart';
 export default function Cart() {
   const navigate = useNavigate();
   const { cartItems, setCartItems } = useContext(CartContext);
-  console.log(cartItems);
   const [navigateOrder, setnavigateOrder] = useState(false);
   const handleCartItems = () => {
     if (!cartItems.length) {
@@ -77,7 +76,7 @@ export default function Cart() {
             <div className={styles.modalContent}>
               <p className={styles.modalText}>
                 ВЫ НИЧЕГО НЕ ДОБАВИЛИ В КОРЗИНУ,ЧТОБЫ ОФОРМИТЬ ЗАКАЗ!
-              </p>{' '}
+              </p>
               <button
                 className={styles.modalButton}
                 onClick={() => {
