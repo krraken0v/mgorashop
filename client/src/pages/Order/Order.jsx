@@ -2,30 +2,80 @@ import styles from './Order.module.sass';
 import { CartContext } from '../../ContextCart';
 import { useContext } from 'react';
 import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
+import { loadStripe } from '@stripe/stripe-js';
 export default function Order() {
-  const navigate = useNavigate();
   const { cartItems } = useContext(CartContext);
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [adress, setAdress] = useState('');
   const [phone, setPhone] = useState('');
-  const [modal, setShowModal] = useState(false);
   const [checkboxChecked, setChecked] = useState(false);
   const [errors, setErrors] = useState({});
-  const handleModalShow = () => {
+  const stripePromise = loadStripe(
+    'pk_test_51RVH1L07KLR4Sxkk9s8RB3jzJZww1PPwFgcmAnRYVN19zeh4y0kKNLOsSDpfYkccGeAPUi2uouoEnmGPJ35Harz800by3QLki7'
+  );
+  const handleStripePayment = async () => {
+    try {
+      const response = await fetch('http://localhost:5000/payment/create-checkout-session', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ items: cartItems }),
+      });
+
+      const data = await response.json();
+      const stripe = await stripePromise;
+      await stripe.redirectToCheckout({ sessionId: data.id });
+    } catch (error) {
+      console.error('Stripe payment error:', error);
+    }
+  };
+
+  const postOrders = async () => {
+    const itemsToSend = cartItems.map(item => ({
+      title: item.title,
+      price: item.price,
+      quantity: item.quantity || 1,
+    }));
+    const newOrder = {
+      name: name,
+      email: email,
+      adress: adress,
+      phone: phone,
+      items: itemsToSend,
+    };
+    try {
+      const response = await axios.post('http://localhost:5000/orders', newOrder);
+      console.log(response);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+  const handleModalShow = async () => {
     const newErrors = {};
     if (!name.trim()) newErrors.name = 'Введите имя и фамилию';
     if (!email.trim()) newErrors.email = 'Введите email';
     if (!adress.trim()) newErrors.adress = 'Введите свой адрес';
     if (!phone.trim()) newErrors.phone = 'Введите номер телефона';
     if (!checkboxChecked) newErrors.agree = 'Вы должны согласиться с условиями';
+    if (cartItems.length < 1) newErrors.cart = 'ВЫ должны заказать что-нибудь';
+    if (!/^[^\s@]+@[^\s@.]+\.[^\s@]+(?:\.[^\s@]+)*$/.test(email)) {
+      newErrors.email = 'Некорректный email';
+    }
+    if (!/^\+?\d{10,15}$/.test(phone)) {
+      newErrors.phone = 'Введите корректный номер телефона';
+    }
     if (Object.keys(newErrors).length > 0) {
       setErrors(newErrors);
       return;
     }
-    setErrors({});
-    setShowModal(true);
+    try {
+      await postOrders();
+      await handleStripePayment();
+      setErrors({});
+    } catch (error) {
+      console.log(error);
+    }
   };
   return (
     <div className={styles.ordercontainer}>
@@ -60,7 +110,7 @@ export default function Order() {
         {errors.adress && <span className={styles.errorText}>{errors.adress}</span>}
         <input
           className={`${styles.orderinput} ${errors.phone ? styles.error : ' '}`}
-          type="phone"
+          type="tel"
           placeholder="ТЕЛЕФОН"
           value={phone}
           onChange={e => setPhone(e.target.value)}
@@ -83,31 +133,22 @@ export default function Order() {
       {errors.agree && <span className={styles.errorTextAgree}>{errors.agree}</span>}
       <div className={styles.orderSubmit}>
         ВАШ ЗАКАЗ:
+        {errors.cart && <p className={styles.errorTextAgree}>{errors.cart}</p>}
         {cartItems.map(item => (
           <p className={styles.submitparagraph} key={item.id}>
-            <img className={styles.okicon} src="/public/assets/okicon.png" alt="ok" /> {item.title}X
-            {item.quantity} - {item.price * item.quantity}
+            <img className={styles.okicon} src="/public/assets/okicon.png" alt="ok" /> {item.title}{' '}
+            == {item.quantity} шт == {item.price * item.quantity}$
           </p>
         ))}
       </div>
-      <button className={styles.ordersuccess} onClick={() => handleModalShow()}>
-        ОФОРМИТЬ ЗАКАЗ
+      <button
+        className={styles.ordersuccess}
+        onClick={() => {
+          handleModalShow();
+        }}
+      >
+        ПЕРЕЙТИ К ОПЛАТЕ
       </button>
-      {modal && (
-        <div className={styles.modalOverlay}>
-          <div className={styles.modalContent}>
-            <p className={styles.modalText}>Ваш заказ успешно оформлен!</p>{' '}
-            <button
-              className={styles.modalButton}
-              onClick={() => {
-                navigate('/');
-              }}
-            >
-              Вернуться в каталог
-            </button>
-          </div>
-        </div>
-      )}
     </div>
   );
 }
