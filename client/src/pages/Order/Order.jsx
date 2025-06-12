@@ -13,7 +13,7 @@ export default function Order() {
   const [checkboxChecked, setChecked] = useState(false);
   const [errors, setErrors] = useState({});
   const stripePromise = loadStripe(
-    ''
+    'pk_test_51RVH1L07KLR4Sxkk9s8RB3jzJZww1PPwFgcmAnRYVN19zeh4y0kKNLOsSDpfYkccGeAPUi2uouoEnmGPJ35Harz800by3QLki7'
   );
   const handleStripePayment = async () => {
     try {
