@@ -2,7 +2,7 @@ const express = require("express");
 const router = express.Router();
 const Stripe = require("stripe");
 const stripe = new Stripe(
-  "sk_test_51RVH1L07KLR4SxkkGc56cyfNvQTbgNWEwXrzNDvzw1p2jpffq9UkuteIhhfpzFbetDoTB4QNRydQODHBLMWWk4ru00Le6aIqgF"
+  ""
 );
 
 router.post("/create-checkout-session", async (req, res) => {
