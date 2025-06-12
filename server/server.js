@@ -9,7 +9,7 @@ const cors = require("cors");
 const morgan = require("morgan");
 const app = express();
 const MONGO_URI = process.env.MONGO_URI;
-const PORT = process.env.PORT;
+const PORT = process.env.PORT || 5000;
 app.use(
   cors({
     origin: "http://localhost:5173",
