@@ -10,6 +10,11 @@
   margin-top: 50px;
 }
 
+.divskeleton {
+  margin: 0 auto;
+  display: block;
+}
+
 @media (max-width: 500px) {
   .productscontainer {
     display: grid;

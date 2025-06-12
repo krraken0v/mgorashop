@@ -1,0 +1,41 @@
+.modalOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.modalContent {
+  background: white;
+  width: 300px;
+  height: 170px;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  text-align: center;
+}
+
+.modalButton {
+  margin-top: 50px;
+  width: 200px;
+  height: 50px;
+  cursor: pointer;
+  color: #fff;
+  background-color: #E63946;
+  border: none;
+  font-size: 17px;
+  border-radius: 10px;
+}
+
+.modalText {
+  margin-top: 10px;
+  font-size: 20px;
+  font-weight: 700;
+  color: #ce1a1a;
+}/*# sourceMappingURL=Cancel.module.css.map */

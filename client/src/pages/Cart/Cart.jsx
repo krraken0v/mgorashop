@@ -51,14 +51,14 @@ export default function Cart() {
                 +
               </button>
             </div>
-            <div className={styles.cartitemprice}>{item.price}</div>
+            <div className={styles.cartitemprice}>{item.price}$</div>
             <div className={styles.buttonttash} onClick={() => handleItems(item.id)}>
               <img src="/public/assets/trashicon.png" alt="trash" />
             </div>
           </div>
         ))}
       </div>
-      <div className={styles.allprice}>ИТОГО:{totalPrice}</div>
+      <div className={styles.allprice}>ИТОГО: {totalPrice}$</div>
       <div className={styles.buttonsforbuycontainer}>
         <button className={styles.buttonback} onClick={() => navigate('/')}>
           ВЕРНУТЬСЯ В КАТАЛОГ

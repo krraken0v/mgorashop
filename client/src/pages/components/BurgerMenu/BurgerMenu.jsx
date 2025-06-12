@@ -3,13 +3,12 @@ import styles from '../BurgerMenu/BurgerMenu.module.sass';
 import { useState } from 'react';
 import { useContext } from 'react';
 import { CartContext } from '../../../ContextCart';
-
-
-export default function BurgerMenu({onClickCategory }) {
+export default function BurgerMenu({ onClickCategory }) {
   const menu = ['ГОЛОВНА', 'КОНТАКТИ', 'ВЕСЬ ОДЯГ', 'ФУТБОЛКИ', 'ШТАНИ', 'КУРТКИ'];
   const navigate = useNavigate();
   const [opened, setOpen] = useState(false);
-  const {cartItems} = useContext(CartContext);
+  const { cartItems } = useContext(CartContext);
+
   return (
     <>
       <div className={styles.burgercontainer}>
@@ -19,7 +18,9 @@ export default function BurgerMenu({onClickCategory }) {
         <div onClick={() => setOpen(true)} className={styles.burgerimg}>
           <div className={styles.cartimagecontainer} onClick={() => navigate('/cart')}>
             <img className={styles.cartimage} src="/assets/cartimage.png" alt="cartimage" />
-            <p className={styles.counternumber}>{cartItems.length}</p>
+            <p className={styles.counternumber}>
+              {cartItems.reduce((acc, item) => acc + item.quantity, 0)}
+            </p>
           </div>
           <img src="/public/assets/burgermenu.png" alt="burgermenuimg" />
         </div>

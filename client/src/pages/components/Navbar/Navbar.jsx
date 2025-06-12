@@ -2,10 +2,10 @@ import styles from './Navbar.module.sass';
 import { useNavigate } from 'react-router-dom';
 import { useContext } from 'react';
 import { CartContext } from '../../../ContextCart';
-export default function Navbar({ onClickCategory,}) {
+export default function Navbar({ onClickCategory }) {
   const menu = ['ГОЛОВНА', 'КОНТАКТИ', 'ВЕСЬ ОДЯГ', 'ФУТБОЛКИ', 'ШТАНИ', 'КУРТКИ'];
   const navigate = useNavigate();
-  const {cartItems} = useContext(CartContext);
+  const { cartItems } = useContext(CartContext);
   return (
     <div className={styles.navbarcontainer}>
       <div className={styles.logoimagecontainer}>
@@ -26,7 +26,9 @@ export default function Navbar({ onClickCategory,}) {
       </ul>
       <div className={styles.cartimagecontainer} onClick={() => navigate('/cart')}>
         <img className={styles.cartimage} src="/assets/cartimage.png" alt="cartimage" />
-        <p className={styles.counternumber}>{cartItems.length}</p>
+        <p className={styles.counternumber}>
+          {cartItems.reduce((acc, item) => acc + item.quantity, 0)}
+        </p>
       </div>
     </div>
   );

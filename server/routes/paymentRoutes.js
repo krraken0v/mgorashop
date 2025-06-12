@@ -1,15 +1,16 @@
-
-const express = require('express');
+const express = require("express");
 const router = express.Router();
-const Stripe = require('stripe');
-const stripe = new Stripe(''); 
+const Stripe = require("stripe");
+const stripe = new Stripe(
+  "sk_test_51RVH1L07KLR4SxkkGc56cyfNvQTbgNWEwXrzNDvzw1p2jpffq9UkuteIhhfpzFbetDoTB4QNRydQODHBLMWWk4ru00Le6aIqgF"
+);
 
-router.post('/create-checkout-session', async (req, res) => {
+router.post("/create-checkout-session", async (req, res) => {
   const { items } = req.body;
 
-  const lineItems = items.map(item => ({
+  const lineItems = items.map((item) => ({
     price_data: {
-      currency: 'usd',
+      currency: "usd",
       product_data: {
         name: item.title,
       },
@@ -19,11 +20,11 @@ router.post('/create-checkout-session', async (req, res) => {
   }));
 
   const session = await stripe.checkout.sessions.create({
-    payment_method_types: ['card'],
+    payment_method_types: ["card"],
     line_items: lineItems,
-    mode: 'payment',
-    success_url: 'http://localhost:3000/success',
-    cancel_url: 'http://localhost:3000/cancel',
+    mode: "payment",
+    success_url: "http://localhost:5173/success",
+    cancel_url: "http://localhost:5173/cancel",
   });
 
   res.json({ id: session.id });
