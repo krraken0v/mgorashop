@@ -2,7 +2,7 @@ import Navbar from '../components/Navbar/Navbar';
 import ProductItem from '../components/ProductItem/ProductItem';
 import Footer from '../components/Footer/Footer';
 import styles from '/src/pages/Home/Home.module.sass';
-import Skeleton from '../components/ReactSkeleton/Skeleton';
+import Skeleton from '../components/Skeleton/Skeleton';
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 import BurgerMenu from '../components/BurgerMenu/BurgerMenu';
@@ -22,9 +22,17 @@ export default function Home() {
     };
     fetchProducts();
   }, []);
+
+  const handleSearch = filtered => {
+    setProducts(filtered);
+  };
   return (
     <>
-      <Navbar onClickCategory={setSelectedCategory}></Navbar>
+      <Navbar
+        onClickCategory={setSelectedCategory}
+        products={products}
+        onSearch={handleSearch}
+      ></Navbar>
       <BurgerMenu onClickCategory={setSelectedCategory}></BurgerMenu>
       <div className={styles.productscontainer}>
         {isLoading

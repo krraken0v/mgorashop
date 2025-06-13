@@ -1,6 +1,6 @@
 const express = require("express");
-const Order = require("../models/Order");
 const validator = require("validator");
+const Order = require("../models/Order");
 const router = express.Router();
 router.post("/", async (req, res) => {
   try {
@@ -12,8 +12,8 @@ router.post("/", async (req, res) => {
       !adress.trim() ||
       !Array.isArray(items) ||
       items.length == 0 ||
-      !validator.isEmail(email, "any") ||
-      !validator.isMobilePhone(phone)
+      !validator.isEmail(email) ||
+      !validator.isMobilePhone(phone, "any")
     ) {
       return res
         .status(400)
@@ -28,6 +28,14 @@ router.post("/", async (req, res) => {
     });
     const savedOrder = await newOrder.save();
     res.status(201).json(savedOrder);
+  } catch (err) {
+    res.status(500).json({ message: err.message });
+  }
+});
+router.get("/", async (req, res) => {
+  try {
+    const orders = await Order.find();
+    res.json(orders);
   } catch (err) {
     res.status(500).json({ message: err });
   }

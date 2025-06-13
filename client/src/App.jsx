@@ -4,6 +4,7 @@ import NotFound from './pages/NotFound/NotFound';
 import Order from './pages/Order/Order';
 import Cart from './pages/Cart/Cart';
 import Success from './pages/Success/Success';
+import Admin from './pages/Admin/Admin';
 import Cancel from './pages/Cancel/Cancel';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { CartContext } from './ContextCart';
@@ -20,6 +21,7 @@ function App() {
           <Route path="/social" element={<Social />} />
           <Route path="/cart" element={<Cart></Cart>}></Route>
           <Route path="/success" element={<Success></Success>}></Route>
+          <Route path="admin" element={<Admin></Admin>}></Route>
           <Route path="/cancel" element={<Cancel></Cancel>}></Route>
         </Routes>
       </CartContext.Provider>

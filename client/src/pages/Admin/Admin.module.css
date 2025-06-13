@@ -1,0 +1,56 @@
+.admincontainer {
+  height: 100%;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+table th, table td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: left;
+}
+table th {
+  background-color: #f2f2f2;
+  font-weight: bold;
+}
+table tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+table tr:hover {
+  background-color: #e6f7ff;
+}
+
+ul {
+  list-style: none;
+}
+
+.adminbutton {
+  width: 424px;
+  height: 68px;
+  color: #fff;
+  background-color: #E63946;
+  border-radius: 10px;
+  text-align: center;
+  font-size: 24px;
+  display: block;
+  margin: 0 auto;
+  margin-top: 61px;
+  border: none;
+  cursor: pointer;
+}
+
+.adminOrdersInput {
+  width: 633px;
+  height: 66px;
+  background-color: #E6E6E6;
+  display: block;
+  border-radius: 10px;
+  color: #202124;
+  border: none;
+  margin: 0 auto;
+  margin-top: 33px;
+  padding-left: 15px;
+}/*# sourceMappingURL=Admin.module.css.map */
