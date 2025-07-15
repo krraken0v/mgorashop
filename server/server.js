@@ -2,6 +2,9 @@ require("dotenv").config();
 const express = require("express");
 const mongoose = require("mongoose");
 const paymentRoutes = require("./routes/paymentRoutes");
+const cookieParser = require("cookie-parser");
+const RegisterRoute = require("./routes/RegisterRoute");
+const { PrismaClient } = require("./generated/prisma");
 const newLocal = "./routes/productRoutes";
 const orderRoutes = require("./routes/orderRoutes");
 const productRoutes = require(newLocal);
@@ -17,11 +20,15 @@ app.use(
     credentials: true,
   })
 );
+app.use(cookieParser());
 app.use(express.json());
 app.use(morgan("dev"));
 app.use("/products", productRoutes);
 app.use("/orders", orderRoutes);
+app.use("/api/register", RegisterRoute);
 app.use("/payment", paymentRoutes);
+const prisma = new PrismaClient();
+app.set("prisma", prisma);
 mongoose
   .connect(MONGO_URI)
   .then(console.log("MongoDB is Connected"))

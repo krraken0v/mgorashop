@@ -18,7 +18,7 @@ export default function ProductItem({ id, image, title, price }) {
   return (
     <>
       <div className={styles.productItemcontainer} key={id}>
-        <img src={image} className={styles.productimage} alt="product" />
+        <div className={styles.productimage} alt="product" />
         <h2 className={styles.producttitle}>{title}</h2>
         <p className={styles.productprice}>{price}$</p>
         <button
