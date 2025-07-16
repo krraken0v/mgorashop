@@ -1,24 +1,22 @@
 import styles from './Navbar.module.sass';
 import { useNavigate } from 'react-router-dom';
 import { useContext } from 'react';
+import Login from '../../Login/Login';
 import { CartContext } from '../../../ContextCart';
 import { useState } from 'react';
 import Register from '../../Register/Register';
-export default function Navbar({ onClickCategory, products, onSearch }) {
+export default function Navbar({ onClickCategory}) {
   const menu = ['ГОЛОВНА', 'КОНТАКТИ', 'ВЕСЬ ОДЯГ', 'ФУТБОЛКИ', 'ШТАНИ', 'КУРТКИ'];
   const navigate = useNavigate();
-  const [search, setSearch] = useState('');
   const [modalReg, setModalReg] = useState(false);
+  const [modalLog,setModalLog] = useState(false);
+  const [search,setSearch] = useState('');
   const { cartItems } = useContext(CartContext);
-  const handleSearch = e => {
-    const value = e.target.value;
-    setSearch(value);
-    const filtered = products.filter(item =>
-      item.title.toLowerCase().includes(search.toLowerCase())
-    );
-    onSearch(filtered);
-  };
-
+  const handleSearch = () =>{
+    if(search.trim()){
+      navigate(`/search?query=${encodeURIComponent(search)}`);
+    }
+  }
   return (
     <div className={styles.navbarcontainer}>
       <div className={styles.logoimagecontainer}>
@@ -37,10 +35,12 @@ export default function Navbar({ onClickCategory, products, onSearch }) {
           </li>
         ))}
       </ul>
-      <input type="text" placeholder="ПОИСК" onChange={e => handleSearch(e)} />
+      <input type="text" placeholder="ПОИСК" value={search} onChange={e => setSearch(e.target.value)} />
+      <button onClick={()=>handleSearch()} className={styles.buttonsearch}>ПОИСК</button>
       <button onClick={() => setModalReg(true)} className={styles.registerbutton}>
         РЕГИСТРАЦИЯ
       </button>
+      <button onClick={()=>setModalLog(true)} className={styles.loginbutton}>ВОЙТИ</button>
       <div className={styles.cartimagecontainer} onClick={() => navigate('/cart')}>
         <img className={styles.cartimage} src="/assets/cartimage.png" alt="cartimage" />
         <p className={styles.counternumber}>
@@ -48,6 +48,7 @@ export default function Navbar({ onClickCategory, products, onSearch }) {
         </p>
       </div>
       {modalReg && <Register setModalReg={setModalReg}></Register>}
+      {modalLog && <Login setModalLog={setModalLog}></Login>}
     </div>
   );
 }

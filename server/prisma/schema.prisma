@@ -20,3 +20,7 @@ model User {
   password String
   createdAt DateTime @default(now())
 }
+model Favorite {
+  id String @id @default(uuid())
+
+}
