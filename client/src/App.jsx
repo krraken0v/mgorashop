@@ -4,6 +4,7 @@ import NotFound from './pages/NotFound/NotFound';
 import Order from './pages/Order/Order';
 import Cart from './pages/Cart/Cart';
 import Success from './pages/Success/Success';
+import ItemPage from './pages/ItemPage/ItemPage';
 import Search from './pages/Search/Search';
 import Admin from './pages/Admin/Admin';
 import Cancel from './pages/Cancel/Cancel';
@@ -16,6 +17,7 @@ function App() {
     <>
       <CartContext.Provider value={{ cartItems, setCartItems }}>
         <Routes>
+          <Route path="/itempage/:id" element={<ItemPage></ItemPage>}></Route>
           <Route path="/" element={<Home />} />
           <Route path='/search' element={<Search></Search>}></Route>
           <Route path="*" element={<NotFound></NotFound>}></Route>

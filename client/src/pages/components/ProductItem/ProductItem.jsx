@@ -1,8 +1,8 @@
 import styles from './ProductItem.module.sass';
 import { CartContext } from '../../../ContextCart';
-
+import { Link } from 'react-router-dom';
 import { useContext } from 'react';
-export default function ProductItem({ id, image, title, price }) {
+export default function ProductItem({ _id, image, title, price }) {
   const { cartItems, setCartItems } = useContext(CartContext);
   const addtoCart = () => {
     const existingItem = cartItems.find(item => item.id === id);
@@ -17,7 +17,8 @@ export default function ProductItem({ id, image, title, price }) {
   };
   return (
     <>
-      <div className={styles.productItemcontainer} key={id}>
+    <Link to={`/itempage/${_id}`}>
+      <div className={styles.productItemcontainer} key={_id}>
         <div className={styles.productimage} alt="product" />
         <h2 className={styles.producttitle}>{title}</h2>
         <p className={styles.productprice}>{price}$</p>
@@ -31,6 +32,7 @@ export default function ProductItem({ id, image, title, price }) {
           <img className={styles.buttoncartimg} src="/public/assets/cartimage.png" alt="cart" />
         </button>
       </div>
+      </Link>
     </>
   );
 }

@@ -15,6 +15,7 @@ export default function Home() {
       try {
         const response = await axios.get('http://localhost:5000/products');
         setProducts(response.data);
+        console.log(response.data)
         setIsLoading(false);
       } catch (err) {
         console.error(`Ошибка при загрузке товаров: ${err}`);
@@ -49,8 +50,8 @@ export default function Home() {
               )
               .map(product => (
                 <ProductItem
-                  key={product.id}
-                  id={product.id}
+                  key={product._id}
+                  _id={product._id}
                   image={product.image}
                   title={product.title}
                   price={product.price}

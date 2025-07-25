@@ -5,6 +5,7 @@ const paymentRoutes = require("./routes/paymentRoutes");
 const cookieParser = require("cookie-parser");
 const RegisterRoute = require("./routes/RegisterRoute");
 const LoginRoute = require('./routes/LoginRoute');
+const itemPageRoute = require('./routes/itemPageRoute');
 const SearchRoute = require('./routes/SearchRoute');
 const { PrismaClient } = require("./generated/prisma");
 const newLocal = "./routes/productRoutes";
@@ -31,6 +32,7 @@ app.use('/api/search',SearchRoute);
 app.use("/api/register", RegisterRoute);
 app.use('/api/login',LoginRoute);
 app.use("/payment", paymentRoutes);
+app.use('/api/itempage',itemPageRoute);
 const prisma = new PrismaClient();
 app.set("prisma", prisma);
 mongoose
