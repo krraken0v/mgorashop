@@ -8,11 +8,11 @@ export default function ProductItem({ _id, image, title, price }) {
     const existingItem = cartItems.find(item => item.id === id);
     if (existingItem) {
       const updateCart = cartItems.map(item =>
-        item.id === id ? { ...item, quantity: item.quantity + 1 } : item
+        item.id === _id ? { ...item, quantity: item.quantity + 1 } : item
       );
       setCartItems(updateCart);
     } else {
-      setCartItems([...cartItems, { id, title, price, image, quantity: 1 }]);
+      setCartItems([...cartItems, { _id, title, price, image, quantity: 1 }]);
     }
   };
   return (

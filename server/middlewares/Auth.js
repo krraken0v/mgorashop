@@ -7,7 +7,7 @@ const Auth = async (req,res,next)=>{
         res.status(401).json({message:"Пользователь не зарегестрирован"});
     }
     const decoded = jwt.verify(token,process.env.SECRET_JWT);
-    req.user = decoded;
+    req.user = {id:decoded.id};
     next();
 } catch(error){
     res.status(401).json({message:"Произошла ошибка при авторизации пользователя"});

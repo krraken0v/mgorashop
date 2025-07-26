@@ -9,6 +9,7 @@ import Search from './pages/Search/Search';
 import Admin from './pages/Admin/Admin';
 import Cancel from './pages/Cancel/Cancel';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Favorites from './pages/Favorites/Favorites';
 import { CartContext } from './ContextCart';
 import { useState } from 'react';
 function App() {
@@ -17,6 +18,7 @@ function App() {
     <>
       <CartContext.Provider value={{ cartItems, setCartItems }}>
         <Routes>
+          <Route path='/favorites' element={<Favorites></Favorites>}></Route>
           <Route path="/itempage/:id" element={<ItemPage></ItemPage>}></Route>
           <Route path="/" element={<Home />} />
           <Route path='/search' element={<Search></Search>}></Route>
