@@ -12,6 +12,7 @@ export default function Navbar({ onClickCategory }) {
   const [modalReg, setModalReg] = useState(false);
   const [modalLog, setModalLog] = useState(false);
   const [registered, setRegistered] = useState(false);
+  const [modalAcc, setModalAcc] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
   const [search, setSearch] = useState('');
   const { cartItems } = useContext(CartContext);
@@ -39,6 +40,21 @@ export default function Navbar({ onClickCategory }) {
     };
     handleAuth();
   }, []);
+  const handleExit = async () => {
+    try {
+      const response = await axios.post(
+        'http://localhost:5000/api/authexit',
+        {},
+        { withCredentials: true }
+      );
+      if (response.status == 200) {
+        setRegistered(false);
+        console.log(response.data);
+      }
+    } catch (err) {
+      console.log(err);
+    }
+  };
 
   return (
     <div className={styles.navbarcontainer}>
@@ -73,7 +89,7 @@ export default function Navbar({ onClickCategory }) {
         <div>
           <img
             className={styles.accountIcon}
-            onClick={() => navigate('/favorites')}
+            onClick={() => setModalAcc(true)}
             src="../../../../public/assets/accountIcon.png"
             alt="accountIcon"
           />
@@ -95,6 +111,17 @@ export default function Navbar({ onClickCategory }) {
           {cartItems.reduce((acc, item) => acc + item.quantity, 0)}
         </p>
       </div>
+      {modalAcc && registered && (
+        <div className={styles.modalAccContainer}>
+          <div className={styles.favoriteText} onClick={() => navigate('/favorites')}>
+            <img src="../../../../public/assets/favoriteButton.png" alt="favoriteButton" />
+            <p>Избранное</p>
+          </div>
+          <div className={styles.accExit}>
+            <button onClick={() => handleExit()}>Выйти</button>
+          </div>
+        </div>
+      )}
       {modalReg && <Register setModalReg={setModalReg}></Register>}
       {modalLog && <Login setModalLog={setModalLog}></Login>}
     </div>

@@ -1,11 +1,22 @@
 import styles from './Cart.module.sass';
 import { useNavigate } from 'react-router-dom';
-import { useContext, useState } from 'react';
-import { CartContext } from '../../ContextCart';
-
+import { useState } from 'react';
+import axios from 'axios';
+import { useEffect } from 'react';
 export default function Cart() {
   const navigate = useNavigate();
-  const { cartItems, setCartItems } = useContext(CartContext);
+  const [cartItems, setCartItems] = useState([]);
+  useEffect(() => {
+    const handleCartItems = async () => {
+      try {
+        const response = await axios.get('http://localhost:5000/api/addtocart');
+        setCartItems(response.data);
+      } catch (err) {
+        console.log(err);
+      }
+    };
+    handleCartItems();
+  }, []);
   const [navigateOrder, setnavigateOrder] = useState(false);
   const handleCartItems = () => {
     if (!cartItems.length) {

@@ -9,7 +9,6 @@ const Auth = async (req, res, next) => {
     }
     const decoded = jwt.verify(token, process.env.SECRET_JWT);
     req.user = { id: decoded.id };
-    console.log(req.cookies);
     next();
   } catch (error) {
     return res

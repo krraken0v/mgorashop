@@ -19,6 +19,7 @@ model User {
   username String
   comments Comment[]
   favorites Favorite[]
+  cartItems Cart[]
   password String
   createdAt DateTime @default(now())
 }
@@ -38,4 +39,12 @@ model Favorite {
   productId String
   @@unique([userId,productId])
 
+}
+model Cart {
+  id String @id @default(uuid())
+  createdAt DateTime @default(now())
+  user User @relation(fields:[userId],references:[id])
+  userId String
+  productId String
+  @@unique ([userId,productId])
 }

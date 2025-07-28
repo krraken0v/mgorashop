@@ -15,7 +15,7 @@ export default function Home() {
       try {
         const response = await axios.get('http://localhost:5000/products');
         setProducts(response.data);
-        console.log(response.data)
+        console.log(response.data);
         setIsLoading(false);
       } catch (err) {
         console.error(`Ошибка при загрузке товаров: ${err}`);
@@ -24,13 +24,9 @@ export default function Home() {
     fetchProducts();
   }, []);
 
-
   return (
     <>
-      <Navbar
-        onClickCategory={setSelectedCategory}
-        products={products}
-      ></Navbar>
+      <Navbar onClickCategory={setSelectedCategory} products={products}></Navbar>
       <BurgerMenu onClickCategory={setSelectedCategory}></BurgerMenu>
       <div className={styles.productscontainer}>
         {isLoading
