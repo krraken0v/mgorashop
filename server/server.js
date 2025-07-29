@@ -14,6 +14,7 @@ const FavoriteRoute = require("./routes/FavoriteRoute");
 const orderRoutes = require("./routes/orderRoutes");
 const AuthExit = require("./routes/AuthExit");
 const CartRoute = require("./routes/CartRoute");
+const CategoryRoute = require("./routes/CategoryRoute");
 const productRoutes = require(newLocal);
 const app = express();
 const cors = require("cors");
@@ -43,6 +44,7 @@ app.use("/api/addtocart", CartRoute);
 app.use("/api/auth", AuthRoute);
 app.use("/api/authexit", AuthExit);
 app.use("/api/comments", CommentRoutes);
+app.use("/api/products", CategoryRoute);
 app.use("/api/itempage", itemPageRoute);
 app.use("/api/favorites", FavoriteRoute);
 mongoose

@@ -1,17 +1,25 @@
 import styles from './Order.module.sass';
-import { CartContext } from '../../ContextCart';
-import { useContext } from 'react';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import axios from 'axios';
 import { loadStripe } from '@stripe/stripe-js';
 export default function Order() {
-  const { cartItems } = useContext(CartContext);
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [adress, setAdress] = useState('');
   const [phone, setPhone] = useState('');
   const [checkboxChecked, setChecked] = useState(false);
   const [errors, setErrors] = useState({});
+  const [cartItems, setCartItems] = useState([]);
+  useEffect(() => {
+    const handleCartItems = async () => {
+      const response = await axios.get('http://localhost/api/addtocart', {
+        withCredentials: true,
+      });
+      setCartItems(response.data);
+    };
+
+    handleCartItems();
+  }, []);
   const stripePromise = loadStripe(
     'pk_test_51RVH1L07KLR4Sxkk9s8RB3jzJZww1PPwFgcmAnRYVN19zeh4y0kKNLOsSDpfYkccGeAPUi2uouoEnmGPJ35Harz800by3QLki7'
   );

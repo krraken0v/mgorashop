@@ -1,21 +1,7 @@
 import styles from './ProductItem.module.sass';
-import { CartContext } from '../../../ContextCart';
 import { Link } from 'react-router-dom';
-import { useContext } from 'react';
 import axios from 'axios';
 export default function ProductItem({ _id, image, title, price }) {
-  const { cartItems, setCartItems } = useContext(CartContext);
-  const addtoCart = () => {
-    const existingItem = cartItems.find(item => item.id === id);
-    if (existingItem) {
-      const updateCart = cartItems.map(item =>
-        item.id === _id ? { ...item, quantity: item.quantity + 1 } : item
-      );
-      setCartItems(updateCart);
-    } else {
-      setCartItems([...cartItems, { _id, title, price, image, quantity: 1 }]);
-    }
-  };
   const handleCartItem = async () => {
     try {
       const response = await axios.post(

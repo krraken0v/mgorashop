@@ -1,8 +1,6 @@
 import styles from './Navbar.module.sass';
 import { useNavigate } from 'react-router-dom';
-import { useContext } from 'react';
 import Login from '../../Login/Login';
-import { CartContext } from '../../../ContextCart';
 import { useState, useEffect } from 'react';
 import Register from '../../Register/Register';
 import axios from 'axios';
@@ -13,9 +11,9 @@ export default function Navbar({ onClickCategory }) {
   const [modalLog, setModalLog] = useState(false);
   const [registered, setRegistered] = useState(false);
   const [modalAcc, setModalAcc] = useState(false);
+  const [cartItems, setCartItems] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [search, setSearch] = useState('');
-  const { cartItems } = useContext(CartContext);
   const handleSearch = () => {
     if (search.trim()) {
       navigate(`/search?query=${encodeURIComponent(search)}`);
@@ -38,6 +36,7 @@ export default function Navbar({ onClickCategory }) {
         setIsLoading(false);
       }
     };
+
     handleAuth();
   }, []);
   const handleExit = async () => {

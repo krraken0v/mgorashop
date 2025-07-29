@@ -21,9 +21,19 @@ export default function Home() {
         console.error(`Ошибка при загрузке товаров: ${err}`);
       }
     };
+    const fetchFilteredProducts = async () => {
+      try {
+        const response = await axios.get(
+          `http://localhost:5000/api/products?sort=${selectedCategory}`
+        );
+        console.log(response.data);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    fetchFilteredProducts();
     fetchProducts();
-  }, []);
-
+  }, [selectedCategory]);
   return (
     <>
       <Navbar onClickCategory={setSelectedCategory} products={products}></Navbar>

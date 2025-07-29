@@ -7,7 +7,9 @@ import { useParams } from 'react-router-dom';
 export default function ItemPage() {
   const [comment, setComment] = useState('');
   const [allComments, setAllComments] = useState([]);
-  const [item, setItem] = useState([]);
+  const [item, setItem] = useState({});
+  const [alikeItems, setAlikeItems] = useState([]);
+  console.log(alikeItems);
   const { id } = useParams();
   useEffect(() => {
     const handleItem = async () => {
@@ -18,6 +20,7 @@ export default function ItemPage() {
         console.log(error.data.message);
       }
     };
+
     const handleComments = async () => {
       try {
         const comments = await axios.get(`http://localhost:5000/api/comments/${id}`);
@@ -26,12 +29,29 @@ export default function ItemPage() {
         console.log(error);
       }
     };
+
     handleItem();
     handleComments();
   }, [id]);
+  useEffect(() => {
+    const handleAlikeItems = async () => {
+      if (!item || !item.category) return;
+      try {
+        const response = await axios.get(
+          `http://localhost:5000/api/products?sort=${item.category}`
+        );
+        console.log(response);
+        setAlikeItems(response.data);
+      } catch (err) {
+        console.log(err);
+      }
+    };
+    handleAlikeItems();
+  }, [item.category]);
+
   const createComment = async () => {
     try {
-      const response = axios.post(
+      const response = await axios.post(
         `http://localhost:5000/api/comments/${id}`,
         { content: comment },
         { withCredentials: true }
@@ -89,6 +109,11 @@ export default function ItemPage() {
             ))}
           </div>
         </div>
+      </div>
+      <div className={styles.alikeItemsContainer}>
+        {alikeItems.map(item => (
+          <li key={item._id}>{item.title}</li>
+        ))}
       </div>
       <Footer></Footer>
     </>
